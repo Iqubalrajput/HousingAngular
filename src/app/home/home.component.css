@@ -1,0 +1,13 @@
+.owl-theme .owl-nav{
+    display: none!important;
+}
+.owl-prev{
+    display: none;
+}
+.owl-next{
+    display: none;
+}
+
+.owl-.owl-carousel.owl-drag .owl-item{
+    margin: 0px 5px;
+  }
