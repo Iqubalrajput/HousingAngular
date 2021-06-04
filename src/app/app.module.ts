@@ -57,6 +57,7 @@ import { AdminloanComponent } from './adminloan/adminloan.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchLeftbarComponent } from './search-leftbar/search-leftbar.component';
 //import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
@@ -109,6 +110,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AllusersComponent,
     LoancalcComponent,
     AdminloanComponent,
+    SearchLeftbarComponent,
   ],
   imports: [
     BrowserModule,
