@@ -482,7 +482,7 @@
 			  <div class="row">
 				  <div class="col-lg-6 offset-lg-3">
 					  <div class="main-title text-center mb40">
-						  <h2>Featured Properties</h2>
+						  <h2>Featured Properties </h2>
 						  <p>Handpicked properties by our team.</p>
 			<h4 class="italic" *ngIf="!content">No Properties</h4>
   
@@ -494,7 +494,6 @@
 					  <!-- <div class="col-md-4 col-lg-4"> -->
 				  <ng-template carouselSlide carouselSlide [id]="number.id" >
 			   
-				  <a href="/productpage"  (click)="prod_func(number.id)">
 					  <div class="feat_property home7 style4">
 						<div class="thumb">
 						  <div class="fp_single_item_slider">
@@ -513,12 +512,24 @@
 						  <div class="thmb_cntnt style3">
 							<ul class="icon mb0">
 							  <!-- <li class="list-inline-item"><a ><span class="flaticon-transfer-1"></span></a></li> -->
-							  <li class="list-inline-item"><a ><span class="flaticon-heart"></span></a></li>
+							  
+								<li class="list-inline-item" *ngIf="number.wishlist!= null;else other_content">
+									<a *ngIf="number.id == number.wishlist.product_id && currentUserid == number.wishlist.user_id;else iqbal" ><span class="flaticon-fa-heart"></span></a>
+									
+									<ng-template #iqbal>
+										 <a (click)="prod_function(number.id)"><span class="flaticon-heart"></span></a>
+										</ng-template>
+								  </li>
+								  <ng-template #other_content>
+							  <li class="list-inline-item"  >
+								<a  (click)="prod_function(number.id)"><span class="flaticon-heart"></span></a>
+							  </li></ng-template>
 							</ul>
 							<a *ngIf="number.expected_pricing != null" class="fp_price" >${{ number.expected_pricing }}<small></small></a>
-							<a *ngIf="number.expected_rent != null" class="fp_price" >${{ number.expected_rent }}<small></small></a>
+							<a *ngIf="number.expected_rent != null" class="fp_price"  >${{ number.expected_rent }}<small></small></a>
 						   </div>
 						</div>
+						<a href="/productpage"  (click)="prod_func(number.id)">
 						<div class="details">
 						  <div class="tc_content">
 							<p class="text-thm">{{ number.type }}</p>
@@ -546,8 +557,8 @@
 							<div class="fp_pdate float-right"><a href="/productpage"><li  class="list-inline-item"></li></a></div>
 						  </div>
 						</div>
+					   </a>
 					  </div>
-					 </a>
 				  </ng-template>
 			  <!-- </div> -->
 				</ng-container>

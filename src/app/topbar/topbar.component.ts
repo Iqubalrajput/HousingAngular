@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./topbar.component.css']
 })
 export class TopbarComponent implements OnInit {
+  [x: string]: any;
 
   form: any = {};
   ared: any = {};
@@ -29,6 +30,7 @@ export class TopbarComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.wishlistcount();
     this.data = this.tokenStorage.getToken();
     if (this.tokenStorage.getToken() != null){
       this.isLoggedIn = true;
@@ -36,6 +38,20 @@ export class TopbarComponent implements OnInit {
 
     }
 
+  }
+  wishlistcount(): void{
+    this.userService.getwishlistdata().pipe().subscribe(
+      (wishlistdata: any) => {
+        //  console.log(amenitiesdata);
+        this.wishlistcontent = wishlistdata.data;
+        this.wishlistresult = this.wishlistcontent
+        console.log(this.wishlistresult);
+        //console.log(this.content);
+      },
+      err => {
+        this.content = JSON.parse(err.error).message;
+      }
+    );
   }
 
 

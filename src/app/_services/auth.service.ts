@@ -319,6 +319,11 @@ export class AuthService {
     }), httpOptions);
   }
 
+  Wishlist(id): Observable<any> {
+    return this.http.post(AUTH_API + 'product/wishlist', JSON.stringify({
+      product_id: id,
+    }), httpOptions);
+  }
   create_review(form, id): Observable<any> {
     return this.http.post(AUTH_API + 'product/post_review', JSON.stringify({
       product_id: id,

@@ -16,10 +16,12 @@ export class HomeComponent implements OnInit {
   [x: string]: any;
 
   currentUser: any;
+  currentUserid: any;
   form: any = {};
   data: any = {};
   content: any = {};
   number: any = {};
+  productId =[];
   login
   ftpstring = GlobalConstants.ftpURL
   city
@@ -29,6 +31,7 @@ export class HomeComponent implements OnInit {
     private titleService: Title,
     private tokenService: TokenStorageService,
     private authService: AuthService,
+    private tokenStorage: TokenStorageService,
     private userService: UserService,
     private idservice: TokenStorageService,
     private router: Router
@@ -49,9 +52,48 @@ export class HomeComponent implements OnInit {
     this.amenities();
     this.titleService.setTitle('Housing Street');
     this.currentUser = this.tokenService.getUser().username;
+    this.currentUserid = this.tokenService.getUser().id;
     this.login = this.tokenService.getToken();
 
   }
+
+
+  prod_function(data){
+    
+    // get product id
+        // Login check
+        if(this.tokenStorage.getUser() != null){
+          this.isLoggedIn = true
+          console.log(this.isLoggedIn)
+        }
+        else{
+          this.redirect_to_home();
+        }
+        // console.log(this.form);
+        // this.content = this.tokenStorage.getUser().id;
+        this.maintenance = true;
+        this.parking = false;
+        if (this.tokenStorage.getToken()){
+          this.isLoggedIn = true;      
+          this.authService.Wishlist(data).pipe().subscribe(
+            (result: any) =>{
+              console.log(result);
+            },
+            err => {
+              console.log(err.error);
+            }
+          );
+
+
+        }
+        else{
+          this.isLoggedIn = false ;
+        }
+  }
+  
+  redirect_to_home(): void {
+    window.location.href=GlobalConstants.siteURL="login"
+    }
 
   home_call(): void{
     this.userService.getproductlistingfeatured().pipe().subscribe(

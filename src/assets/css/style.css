@@ -3302,7 +3302,7 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
 .home-five,
 .home-seven,
 .home-nine{
-  margin-top: -96px;
+  margin-top: -100px;
   padding: 0;
 }
 .home-six{
@@ -3516,7 +3516,7 @@ form.home5_advanced_search_form .form-group input.form-control::-ms-input-placeh
   bottom: 0;
   left: 0;
   right: 0;
-  top: 0;
+  top: -5;
   width: 100%;
 }
 .home5_bgi5{

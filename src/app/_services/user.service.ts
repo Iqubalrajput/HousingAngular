@@ -51,6 +51,11 @@ export class UserService {
     return this.http.get(GlobalConstants.apiURL + 'amenities', { responseType: 'json' });
   }
 
+  // wishlist data fetch
+  getwishlistdata():Observable<any> {
+    return this.http.get(GlobalConstants.apiURL + 'product/wishlist', { responseType: 'json' });
+  }
+
   getrequirements(): Observable<any> {
     return this.http.get(GlobalConstants.apiURL + 'product/get_requ', { responseType: 'json' });
   }

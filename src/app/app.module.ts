@@ -58,6 +58,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchLeftbarComponent } from './search-leftbar/search-leftbar.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 //import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
@@ -111,6 +112,7 @@ import { SearchLeftbarComponent } from './search-leftbar/search-leftbar.componen
     LoancalcComponent,
     AdminloanComponent,
     SearchLeftbarComponent,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,
