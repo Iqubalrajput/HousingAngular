@@ -512,18 +512,17 @@
 						  <div class="thmb_cntnt style3">
 							<ul class="icon mb0">
 							  <!-- <li class="list-inline-item"><a ><span class="flaticon-transfer-1"></span></a></li> -->
-							  
-								<li class="list-inline-item" *ngIf="number.wishlist!= null;else other_content">
-									<a *ngIf="number.id == number.wishlist.product_id && currentUserid == number.wishlist.user_id;else iqbal" ><span class="flaticon-fa-heart"></span></a>
-									
-									<ng-template #iqbal>
-										 <a (click)="prod_function(number.id)"><span class="flaticon-heart"></span></a>
-										</ng-template>
-								  </li>
-								  <ng-template #other_content>
-							  <li class="list-inline-item"  >
-								<a  (click)="prod_function(number.id)"><span class="flaticon-heart"></span></a>
-							  </li></ng-template>
+								<li class="list-inline-item"  *ngIf="number[0] != null;else wishlistcontent">
+									<a (click)="DeleteProd_function(number.id)">
+											<span class="flaticon-fa-heart"></span>
+									</a>			
+
+							  </li>
+								 <ng-template #wishlistcontent>
+										<li class="list-inline-item">
+											<a  (click)="prod_function(number.id)"><span class="flaticon-heart"></span></a>
+										</li>
+							    </ng-template>
 							</ul>
 							<a *ngIf="number.expected_pricing != null" class="fp_price" >${{ number.expected_pricing }}<small></small></a>
 							<a *ngIf="number.expected_rent != null" class="fp_price"  >${{ number.expected_rent }}<small></small></a>

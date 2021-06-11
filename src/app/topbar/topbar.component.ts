@@ -42,11 +42,9 @@ export class TopbarComponent implements OnInit {
   wishlistcount(): void{
     this.userService.getwishlistdata().pipe().subscribe(
       (wishlistdata: any) => {
-        //  console.log(amenitiesdata);
         this.wishlistcontent = wishlistdata.data;
         this.wishlistresult = this.wishlistcontent
         console.log(this.wishlistresult);
-        //console.log(this.content);
       },
       err => {
         this.content = JSON.parse(err.error).message;

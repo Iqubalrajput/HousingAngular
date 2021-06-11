@@ -44,7 +44,6 @@ export class WishlistComponent implements OnInit {
       else{
         this.redirect_to_home();
       }
-      console.log(this.form);
       this.content = this.tokenStorage.getUser().id;
       this.maintenance = true;
       this.parking = false;
@@ -63,7 +62,7 @@ export class WishlistComponent implements OnInit {
         (wishlistdata: any) => {
           //  console.log(amenitiesdata);
           this.wishlistcontent = wishlistdata.data;
-          this.wishlistresult = this.wishlistcontent
+          this.wishlistresult = this.wishlistcontent;
           console.log(this.wishlistresult);
           //console.log(this.content);
         },
@@ -72,11 +71,26 @@ export class WishlistComponent implements OnInit {
         }
       );
     }
+    DeleteProd_function(data: any){
+      if(this.tokenStorage.getUser() != null){
+        this.isLoggedIn = true
+         this.authService.WishlistRemove(data).pipe().subscribe(
+          (result: any) =>{
+            console.log(result);
+            this.getwishlist();
+          },
+          err => {
+            console.log(err.error);
+          }
+        );
+      }
+      else{
+        this.redirect_to_home();
+      }
+      
+    }
 
-
-
-
-    redirect_to_home(): void {
+   redirect_to_home(): void {
       window.location.href=GlobalConstants.siteURL="login"
     }
     prod_func(data){

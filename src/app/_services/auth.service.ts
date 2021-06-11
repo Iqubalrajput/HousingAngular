@@ -324,6 +324,11 @@ export class AuthService {
       product_id: id,
     }), httpOptions);
   }
+  WishlistRemove(id): Observable<any> {
+    return this.http.post(AUTH_API + 'product/wishlistDelete', JSON.stringify({
+      product_id: id,
+    }), httpOptions);
+  }
   create_review(form, id): Observable<any> {
     return this.http.post(AUTH_API + 'product/post_review', JSON.stringify({
       product_id: id,
@@ -348,6 +353,10 @@ export class AuthService {
     return this.http.post(AUTH_API + 'product/product_review', JSON.stringify({
       id: id,
     }), httpOptions);
+  }
+  
+  getproductWishlist(): Observable<any> {
+    return this.http.get(GlobalConstants.apiURL + 'product/get_product_wishlist', { responseType: 'json' });
   }
 
   lawyer_create_service(data): Observable<any> {

@@ -43,6 +43,7 @@ export class UserService {
   getproductlistingfeatured(): Observable<any> {
     return this.http.get(GlobalConstants.apiURL + 'product/get_product_featured', { responseType: 'json' });
   }
+  
   // iqbal function start
   gettestimonialdata(): Observable<any> {
     return this.http.get(GlobalConstants.apiURL + 'product/testimonial', { responseType: 'json' });
@@ -53,6 +54,9 @@ export class UserService {
 
   // wishlist data fetch
   getwishlistdata():Observable<any> {
+    return this.http.get(GlobalConstants.apiURL + 'product/wishlist', { responseType: 'json' });
+  }
+  wishlistcount():Observable<any> {
     return this.http.get(GlobalConstants.apiURL + 'product/wishlist', { responseType: 'json' });
   }
 
