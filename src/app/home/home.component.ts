@@ -6,6 +6,8 @@ import { Title } from '@angular/platform-browser';
 import { GlobalConstants } from './../global-constants';
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+// import { EventEmitter } from 'stream';
+import { Input,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -22,10 +24,10 @@ export class HomeComponent implements OnInit {
   content: any = {};
   number: any = {};
   productId =[];
-  login: any
-  ftpstring = GlobalConstants.ftpURL
-  city: any
-  
+  login: any;
+  ftpstring = GlobalConstants.ftpURL;
+  city: any;
+  @Output()  wishlistadd= new EventEmitter<string>();
 
 
   public constructor(
@@ -63,6 +65,7 @@ export class HomeComponent implements OnInit {
         (result: any) =>{
           console.log(result);
           this.home_call();
+          this.wishlistcount();
         },
         err => {
           console.log(err.error);
@@ -93,6 +96,7 @@ export class HomeComponent implements OnInit {
         (result: any) =>{
           console.log(result);
           this.home_call();
+          this.wishlistcount();
         },
         err => {
           console.log(err.error);
@@ -104,6 +108,18 @@ export class HomeComponent implements OnInit {
       this.isLoggedIn = false ;
     }
   }
+  // wishlistcount(): void{
+  //   this.userService.getwishlistdata().pipe().subscribe(
+  //     (wishlistdata: any) => {
+  //       this.wishlistcontent = wishlistdata.data;
+  //       this.wishlistresult = this.wishlistcontent
+  //       console.log(this.wishlistresult);
+  //     },
+  //     err => {
+  //       this.content = JSON.parse(err.error).message;
+  //     }
+  //   );
+  // }
   
   redirect_to_home(): void {
     window.location.href=GlobalConstants.siteURL="login"
@@ -190,7 +206,9 @@ export class HomeComponent implements OnInit {
         this.tokenService.searchData(data);
       },
       err => {
-        console.log(err.error.message);
+        this.err_caused = true;
+        this.errorMessage = err.error.errors;
+        console.log(this.errorMessage);
       }
     );
     console.log(this.tokenService.returnSearch().product.data);
@@ -198,6 +216,7 @@ export class HomeComponent implements OnInit {
       // this.router.navigate(["/search"])
 
   }
+  
 
   property_search(event: any): void{
     console.log(event)

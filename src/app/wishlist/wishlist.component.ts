@@ -24,6 +24,7 @@ export class WishlistComponent implements OnInit {
   content: any = {};
   maintenance: boolean = true;
   parking: boolean = false;
+  ftpstring = GlobalConstants.ftpURL;
 
   constructor(
     private titleService: Title,

@@ -2,7 +2,7 @@ import { Title } from '@angular/platform-browser';
 import { AuthService } from './../_services/auth.service';
 import { UserService } from './../_services/user.service';
 import { TokenStorageService } from './../_services/token-storage.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-topbar',
@@ -39,7 +39,7 @@ export class TopbarComponent implements OnInit {
     }
 
   }
-  wishlistcount(): void{
+  @Input() wishlistcount(): void{
     this.userService.getwishlistdata().pipe().subscribe(
       (wishlistdata: any) => {
         this.wishlistcontent = wishlistdata.data;

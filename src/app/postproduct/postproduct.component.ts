@@ -243,7 +243,7 @@ z
     this.authService.product_insert_sale(this.form, this.content.id, this.amenityArray, this.furnishingArray, this.image1, this.image2, this.image3, this.image4, this.image5).subscribe(
       data => {
         console.log(data)
-        window.location.href=GlobalConstants.siteURL+"myproperties"
+        // window.location.href=GlobalConstants.siteURL+"myproperties"
       },
       err => {
         this.err_caused = true;
